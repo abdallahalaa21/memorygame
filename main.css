@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+
+}
+.container{
+    margin: auto;
+    width: 42vw;
+    padding-top: 30px;
+    height: auto;
+}
+span{
+    padding-right: 20px;
+}
+.game{
+    border: 2px black solid;
+    height: auto;
+    width: auto;
+    /* padding-bottom: 20px; */
+}
+.imgcont {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    margin: 10px;
+    border: 2px black solid;
+  }
+  
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+  }
+  
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    transition: .3s ease;
+    background-color: red;
+    opacity: 1;
+  } 
+  .button {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
