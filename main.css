@@ -87,8 +87,8 @@ img {
 .modal img{
     margin: auto;
     padding: auto;
-    height: 60%;
-    width: auto;
+    height:auto;
+    width: 5    0vw;
 }
 
 /* Modal Content/Box */
@@ -97,8 +97,8 @@ img {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    height: 60%;
+    width: 90%; /* Could be more or less, depending on screen size */
+    height: auto;
     text-align: center;
 
 }
