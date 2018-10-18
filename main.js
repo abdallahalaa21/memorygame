@@ -1,6 +1,5 @@
 var  imageNo=16; // how many img you want
-console.log("in Java");
-//fuction to create elements and overlay
+// console.log("in Java");
 var myObj, clickedN,clickedid, clickedA,oldClicked,c="0", counter=25 ,rightClicks=0;
 var s=0,m=0;
 var Rclicks=document.getElementById("Rclicks");
@@ -12,11 +11,13 @@ Rchoose.innerHTML=rightClicks;
 CreatElement();
 calll(myObj);
 clk(counter);
+
+//fuction to create elements and overlay
 function CreatElement(){
-    console.log("in function");
+    // console.log("in function");
     for(i=1; i<=imageNo; i++)
     {
-        console.log("in for function");
+        // console.log("in for function");
         var divv = document.createElement('div');
         var imgg =document.createElement('img');
         var overlay= document.createElement('div');
@@ -28,16 +29,17 @@ function CreatElement(){
         divv.appendChild(imgg);
         divv.appendChild(overlay);
         document.getElementById('gamee').appendChild(divv);
-        console.log(myObj);
+        // console.log(myObj);
     }
 }
+//get JSON 
 function calll(){
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function(myObj) {
     if (this.readyState == 4 && this.status == 200) {
        myObj = JSON.parse(this.responseText);
         addimg(myObj);
-        console.log(myObj); 
+        // console.log(myObj); 
     }
     return myObj;
 }
@@ -45,10 +47,11 @@ xmlhttp.open("GET", "img.json", true);
 xmlhttp.send();
 }
 
+//adding URL to img
 function addimg(myObj){
     shuffle();
-    console.log("arr");
-    console.log(arr);
+    // console.log("arr");
+    // console.log(arr);
     for (x in myObj) 
     {
         document.getElementsByClassName("img")[arr[x]].alt=myObj[x].name;
@@ -57,18 +60,21 @@ function addimg(myObj){
     }
 }
 
+// add click listner 
 function clk(){
     var getDiv=document.getElementsByClassName("overlay");
     for(i=0 ;i<getDiv.length ;i++)
     {getDiv[i].addEventListener("click", comp);}
 }
 
+//Compare function
 function comp(myVar){
-    console.log("compare")
+    // console.log("compare")
     clickedid=this.id;
     clickedA=this.title;
     c++;
-    document.getElementById(this.id).style.display="none";
+    document.getElementById(this.id).style.opacity="0";
+    // right choise
     if(oldClicked==clickedA && c=="2"){
         console.log("good");
         c=0;
@@ -76,39 +82,51 @@ function comp(myVar){
         Rchoose.innerHTML=rightClicks;
         counter--;
         Rclicks.innerHTML=counter;
+        // end of game "all choices"
         if(rightClicks==8){
             myStopFunction();
+            alert("you ar goood");
         }
     }
+    //wrong
     if(oldClicked!=clickedA && c=="2"){
         console.log("wrong");
         c=0;
         counter--;
         Rclicks.innerHTML=counter;
         var x=clickedN;
-        if(counter==0){
+    // no remainig wrong choises
+        if(counter<=0){
             var overlay= document.getElementsByClassName("overlay")
             myStopFunction();
-             for(i in overlay)
+             for(i=0 ; i<overlay.length; i++)
              {
-                overlay[i].style.display="none";
+                overlay[i].style.opacity="0";
+                console.log(i);
+                console.log(overlay[i]);
              }
              alert("you failed");
             }
         else{
-        setTimeout(function(){ document.getElementById(clickedid).style.display="block";
-        document.getElementById(x).style.display="block";console.log("time out")},500);
+        setTimeout(function(){ 
+            document.getElementById(clickedid).style.opacity="1";
+        document.getElementById(x).style.opacity="1";
+        // console.log("time out")
+        },500);
         }
         
     }
-    console.log(c);
+    // console.log(c);
     oldClicked=this.title;
     clickedN=this.id;
 }
+
 var myVar=setInterval(timer,1000);
+// stop timer
 function myStopFunction() {
     clearInterval(myVar);
 } 
+//start timer
 function timer(){
     s++;
     if(s<10){
@@ -124,8 +142,8 @@ function timer(){
     time.innerHTML= m+":"+s;
 }
 var arr=[ ];
-function shuffle() {
-   
+// shuffle the imges 
+function shuffle() { 
     arr.length=imageNo;
     for(i=0; i<arr.length; i++) {
     arr[i]=i;
@@ -144,34 +162,6 @@ function shuffle() {
         arr[j] = temp;
 
     }
-    console.log(arr);
+    // console.log(arr);
     return arr
 }
-
-/*
-function comp(){
-    console.log(this.id);
-    document.getElementById(this.id).style.display="none";
-    if(clickedN!=this.id){
-        clickedA=this.title;
-        if(oldClicked!=clickedA && c<2){
-            oldClicked=clickedA;
-            c++;
-            console.log(c);
-        }
-        else if(oldClicked==clickedA){
-            console.log("right  answer");
-            document.getElementById(this.id).style.display="none";
-        }
-        else if(oldClicked!=clickedA && c=="2"){
-            console.log("wrong  answer");
-            document.getElementById(this.id).style.display="block"
-            document.getElementById(clickedN).style.display="block";
-            c="0";
-        }
-        clickedN=this.id;
-    }
-    console.log("clickedN"+clickedN);
-    console.log("clickedA"+clickedA);
-} 
-*/
