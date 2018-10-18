@@ -71,9 +71,11 @@ function clk(){
 function comp(myVar){
     // console.log("compare")
     clickedid=this.id;
+    if(clickedN!=this.id){
     clickedA=this.title;
     c++;
     document.getElementById(this.id).style.opacity="0";
+
     // right choise
     if(oldClicked==clickedA && c=="2"){
         console.log("good");
@@ -85,7 +87,15 @@ function comp(myVar){
         // end of game "all choices"
         if(rightClicks==8){
             myStopFunction();
-            alert("you ar goood");
+            // alert("you ar goood");
+            // Get the modal
+        var modal = document.getElementById('myModal');
+        var modalImg= document.getElementById('modalImg')
+        var textt=document.getElementById('textt')
+        modal.style.display = "block";
+        modalImg.src="https://media1.tenor.com/images/6e787cd3d24a79136578afbdcfc776b3/tenor.gif?itemid=3411621";
+        textt.innerHTML="congraaaaaaaaats You did it";
+        document.getElementById("timerf").innerHTML=timee;
         }
     }
     //wrong
@@ -105,7 +115,13 @@ function comp(myVar){
                 console.log(i);
                 console.log(overlay[i]);
              }
-             alert("you failed");
+             var modal = document.getElementById('myModal');
+             var modalImg= document.getElementById('modalImg')
+             var textt=document.getElementById('textt')
+             modal.style.display = "block";
+             modalImg.src="https://vignette.wikia.nocookie.net/epicrapbattlesofhistory/images/d/d3/You-Fail-random-35627282-607-360.gif/revision/latest?cb=20140201023616"
+             textt.innerHTML="You faaaaaaaild Looooser";
+             document.getElementById("timerf").innerHTML=timee;
             }
         else{
         setTimeout(function(){ 
@@ -119,6 +135,7 @@ function comp(myVar){
     // console.log(c);
     oldClicked=this.title;
     clickedN=this.id;
+}
 }
 
 var myVar=setInterval(timer,1000);
@@ -138,8 +155,9 @@ function timer(){
         m++;
         s=0;
     }
-
+    timee= m+":"+s
     time.innerHTML= m+":"+s;
+    return timee;
 }
 var arr=[ ];
 // shuffle the imges 
