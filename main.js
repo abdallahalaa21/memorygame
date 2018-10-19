@@ -97,7 +97,7 @@ function comp(myVar){
     if(oldClicked==clickedA && c=="2"){
         console.log("good");
         var x=clickedN;
-        var audio = new Audio('/cheering.mp3');
+        var audio = new Audio('./cheering.mp3');
         audio.play();
         c=0;
         rightClicks++;
