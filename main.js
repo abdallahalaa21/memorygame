@@ -91,7 +91,7 @@ function comp(myVar){
     clickedA=this.title;
     c++;
     document.getElementById(this.id).style.display="none";
-    var audio = new Audio('/button-3.mp3');
+    var audio = new Audio('https://raw.githubusercontent.com/abdallahalaa21/memorygame/master/button-3.mp3');
     audio.play();
     // right choise
     if(oldClicked==clickedA && c=="2"){
