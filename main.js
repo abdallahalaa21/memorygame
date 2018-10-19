@@ -91,10 +91,14 @@ function comp(myVar){
     clickedA=this.title;
     c++;
     document.getElementById(this.id).style.display="none";
-
+    var audio = new Audio('/button-3.mp3');
+    audio.play();
     // right choise
     if(oldClicked==clickedA && c=="2"){
         console.log("good");
+        var x=clickedN;
+        var audio = new Audio('/cheering.mp3');
+        audio.play();
         c=0;
         rightClicks++;
         Rchoose.innerHTML=rightClicks;
@@ -105,6 +109,8 @@ function comp(myVar){
             myStopFunction();
             // alert("you ar goood");
             // Get the modal
+        var audio = new Audio('/elrgala.mp3');
+        audio.play();
         var modal = document.getElementById('myModal');
         var modalImg= document.getElementById('modalImg')
         var textt=document.getElementById('textt')
@@ -119,12 +125,24 @@ function comp(myVar){
         counter--;
         Rclicks.innerHTML=counter;
         var x=clickedN;
+        if(counter>0){
+            var audio = new Audio('/Wrong Buzzer.wav');
+            audio.play();
+            setTimeout(function(){ 
+                document.getElementById(clickedid).style.display="block";
+                document.getElementById(x).style.display="block";
+                c=0;
+                Eclicks();
+                },500);
+        }
         stp();
         console.log("wrong");
     // no remainig wrong choises
         if(counter<=0){
             var overlay= document.getElementsByClassName("overlay")
             myStopFunction();
+            var audio = new Audio('/looser.mp3');
+            audio.play();
              for(i=0 ; i<overlay.length; i++)
              {
                 overlay[i].style.display="none";
@@ -139,12 +157,7 @@ function comp(myVar){
              textt.innerHTML="You faaaaaaaild Looooser";
              document.getElementById("timerf").innerHTML=timee;
             }
-        setTimeout(function(){ 
-        document.getElementById(clickedid).style.display="block";
-        document.getElementById(x).style.display="block";
-        c=0;
-        Eclicks();
-        },500);
+        
         
         
     }
