@@ -146,7 +146,7 @@ function comp(myVar){
  if(counter<=0){
     var overlay= document.getElementsByClassName("overlay")
     myStopFunction();
-    var audio = new Audio('/looser.mp3');
+    var audio = new Audio('./looser.mp3');
     audio.play();
      for(i=0 ; i<overlay.length; i++)
      {
