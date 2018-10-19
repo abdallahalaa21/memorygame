@@ -120,52 +120,48 @@ function comp(myVar){
         document.getElementById("timerf").innerHTML=timee;
         }
     }
-    if(counter>0){
-        var audio = new Audio('./Wrong Buzzer.wav');
-        audio.play();
-        setTimeout(function(){ 
-            document.getElementById(clickedid).style.display="block";
-            document.getElementById(x).style.display="block";
-            c=0;
-            Eclicks();
-            },500);
-    }
     //wrong
     if(oldClicked!=clickedA && c=="2"){
         counter--;
         Rclicks.innerHTML=counter;
         var x=clickedN;
-        
+        if(counter>0){
+            var audio = new Audio('./Wrong Buzzer.wav');
+            audio.play();
+            setTimeout(function(){ 
+                document.getElementById(clickedid).style.display="block";
+                document.getElementById(x).style.display="block";
+                c=0;
+                Eclicks();
+                },500);
+        }
         stp();
         console.log("wrong");
-    // no remainig wrong choises
-        if(counter<=0){
-            var overlay= document.getElementsByClassName("overlay")
-            myStopFunction();
-            var audio = new Audio('/looser.mp3');
-            audio.play();
-             for(i=0 ; i<overlay.length; i++)
-             {
-                overlay[i].style.display="none";
-                console.log(i);
-                console.log(overlay[i]);
-             }
-             var modal = document.getElementById('myModal');
-             var modalImg= document.getElementById('modalImg')
-             var textt=document.getElementById('textt')
-             modal.style.display = "block";
-             modalImg.src="https://vignette.wikia.nocookie.net/epicrapbattlesofhistory/images/d/d3/You-Fail-random-35627282-607-360.gif/revision/latest?cb=20140201023616"
-             textt.innerHTML="You faaaaaaaild Looooser";
-             document.getElementById("timerf").innerHTML=timee;
-            }
-        
-        
-        
     }
     // console.log(c);
     oldClicked=this.title;
     clickedN=this.id;
 }
+ // no remainig wrong choises
+ if(counter<=0){
+    var overlay= document.getElementsByClassName("overlay")
+    myStopFunction();
+    var audio = new Audio('/looser.mp3');
+    audio.play();
+     for(i=0 ; i<overlay.length; i++)
+     {
+        overlay[i].style.display="none";
+        console.log(i);
+        console.log(overlay[i]);
+     }
+     var modal = document.getElementById('myModal');
+     var modalImg= document.getElementById('modalImg')
+     var textt=document.getElementById('textt')
+     modal.style.display = "block";
+     modalImg.src="https://vignette.wikia.nocookie.net/epicrapbattlesofhistory/images/d/d3/You-Fail-random-35627282-607-360.gif/revision/latest?cb=20140201023616"
+     textt.innerHTML="You faaaaaaaild Looooser";
+     document.getElementById("timerf").innerHTML=timee;
+    }
 }
 
 
