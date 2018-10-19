@@ -91,7 +91,7 @@ function comp(myVar){
     clickedA=this.title;
     c++;
     document.getElementById(this.id).style.display="none";
-    var audio = new Audio('https://raw.githubusercontent.com/abdallahalaa21/memorygame/master/button-3.mp3');
+    var audio = new Audio('./button-3.mp3');
     audio.play();
     // right choise
     if(oldClicked==clickedA && c=="2"){
@@ -109,7 +109,7 @@ function comp(myVar){
             myStopFunction();
             // alert("you ar goood");
             // Get the modal
-        var audio = new Audio('/elrgala.mp3');
+        var audio = new Audio('./elrgala.mp3');
         audio.play();
         var modal = document.getElementById('myModal');
         var modalImg= document.getElementById('modalImg')
@@ -126,7 +126,7 @@ function comp(myVar){
         Rclicks.innerHTML=counter;
         var x=clickedN;
         if(counter>0){
-            var audio = new Audio('/Wrong Buzzer.wav');
+            var audio = new Audio('./Wrong Buzzer.wav');
             audio.play();
             setTimeout(function(){ 
                 document.getElementById(clickedid).style.display="block";
@@ -141,7 +141,7 @@ function comp(myVar){
         if(counter<=0){
             var overlay= document.getElementsByClassName("overlay")
             myStopFunction();
-            var audio = new Audio('/looser.mp3');
+            var audio = new Audio('./looser.mp3');
             audio.play();
              for(i=0 ; i<overlay.length; i++)
              {
