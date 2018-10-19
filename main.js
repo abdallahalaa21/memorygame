@@ -10,8 +10,6 @@ Rchoose.innerHTML=rightClicks;
 
 CreatElement();
 calll(myObj);
-clk(counter);
-
 //fuction to create elements and overlay
 function CreatElement(){
     // console.log("in function");
@@ -58,23 +56,41 @@ function addimg(myObj){
         document.getElementsByClassName("overlay")[arr[x]].title=myObj[x].name;
         document.getElementsByClassName("img")[arr[x]].src=myObj[x].URL;
     }
+    clk();
+
 }
 
 // add click listner 
 function clk(){
     var getDiv=document.getElementsByClassName("overlay");
     for(i=0 ;i<getDiv.length ;i++)
-    {getDiv[i].addEventListener("click", comp);}
+    {getDiv[i].addEventListener("click", comp)}
+    console.log("in click")
 }
 
+//enable clicks again
+function Eclicks(){
+    var getDiv=document.getElementsByClassName("overlay");
+        for(i=0 ;i<getDiv.length ;i++)
+        {getDiv[i].style.pointerEvents = "auto";}
+}
+
+//stop clicking
+function stp(){
+    var getDiv=document.getElementsByClassName("overlay");
+    for(i=0 ;i<getDiv.length ;i++)
+    {getDiv[i].style.pointerEvents = "none";}
+}
 //Compare function
+
+
 function comp(myVar){
     // console.log("compare")
     clickedid=this.id;
     if(clickedN!=this.id){
     clickedA=this.title;
     c++;
-    document.getElementById(this.id).style.opacity="0";
+    document.getElementById(this.id).style.display="none";
 
     // right choise
     if(oldClicked==clickedA && c=="2"){
@@ -100,18 +116,18 @@ function comp(myVar){
     }
     //wrong
     if(oldClicked!=clickedA && c=="2"){
-        console.log("wrong");
-        c=0;
         counter--;
         Rclicks.innerHTML=counter;
         var x=clickedN;
+        stp();
+        console.log("wrong");
     // no remainig wrong choises
         if(counter<=0){
             var overlay= document.getElementsByClassName("overlay")
             myStopFunction();
              for(i=0 ; i<overlay.length; i++)
              {
-                overlay[i].style.opacity="0";
+                overlay[i].style.display="none";
                 console.log(i);
                 console.log(overlay[i]);
              }
@@ -123,13 +139,13 @@ function comp(myVar){
              textt.innerHTML="You faaaaaaaild Looooser";
              document.getElementById("timerf").innerHTML=timee;
             }
-        else{
         setTimeout(function(){ 
-            document.getElementById(clickedid).style.opacity="1";
-        document.getElementById(x).style.opacity="1";
-        // console.log("time out")
+        document.getElementById(clickedid).style.display="block";
+        document.getElementById(x).style.display="block";
+        c=0;
+        Eclicks();
         },500);
-        }
+        
         
     }
     // console.log(c);
@@ -137,6 +153,7 @@ function comp(myVar){
     clickedN=this.id;
 }
 }
+
 
 var myVar=setInterval(timer,1000);
 // stop timer
@@ -183,3 +200,32 @@ function shuffle() {
     // console.log(arr);
     return arr
 }
+
+
+/*
+function comp(){
+    console.log(this.id);
+    document.getElementById(this.id).style.display="none";
+    if(clickedN!=this.id){
+        clickedA=this.title;
+        if(oldClicked!=clickedA && c<2){
+            oldClicked=clickedA;
+            c++;
+            console.log(c);
+        }
+        else if(oldClicked==clickedA){
+            console.log("right  answer");
+            document.getElementById(this.id).style.display="none";
+        }
+        else if(oldClicked!=clickedA && c=="2"){
+            console.log("wrong  answer");
+            document.getElementById(this.id).style.display="block"
+            document.getElementById(clickedN).style.display="block";
+            c="0";
+        }
+        clickedN=this.id;
+    }
+    console.log("clickedN"+clickedN);
+    console.log("clickedA"+clickedA);
+} 
+*/ 
